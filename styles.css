@@ -1,0 +1,39 @@
+/* ...existing styles... */
+
+:root {
+  --outline-color: #000; /* change if needed */
+}
+
+/* Basic reset & mobile-friendly typography */
+* { box-sizing: border-box; }
+html,body { height: 100%; margin: 0; font-family: "Noto Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; background: #fff; color: #111; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+
+.content {
+  padding: 24px;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+/* The viewport outline:
+   - fixed to the viewport using inset:0 ensures it always matches visible area
+   - outline used instead of border so it doesn't add to layout size
+   - pointer-events:none so it never blocks interaction
+   - use box-shadow fallback for browsers that may render outlines inconsistently on mobile
+*/
+#viewport-outline {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  outline: 1px solid var(--outline-color);
+  /* fallback/visual reinforcement */
+  box-shadow: 0 0 0 1px var(--outline-color);
+  z-index: 9999;
+}
+
+/* Prevent the outline from creating a scroll gap on some mobile browsers */
+html, body {
+  overscroll-behavior: contain;
+}
+
+/* ...existing styles... */
+
